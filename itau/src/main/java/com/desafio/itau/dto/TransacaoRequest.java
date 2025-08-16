@@ -8,7 +8,7 @@ import java.time.OffsetDateTime;
 public class TransacaoRequest {
 
     @NotNull
-    @DecimalMin(value = "0.0", inclusive = true)
+    @Positive
     private Double valor;
 
     @PastOrPresent

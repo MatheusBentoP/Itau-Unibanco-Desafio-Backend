@@ -13,19 +13,20 @@ import java.util.stream.Collectors;
 @Service
 public class TransacaoService {
 
-    public TransacaoResponse cadastraTransacao(TransacaoRequest transacaoRequest) {
-        Transacao transacao = TransacaoMapper.toEntity(transacaoRequest);
-        return TransacaoMapper.toDto(transacao);
+    private final List<TransacaoRequest> transacoes = new ArrayList<>();
+
+    public void salvarTransacao(TransacaoRequest dto) {
+        transacoes.add(dto);
     }
-
-    private final List<Transacao> trasancoes = new ArrayList<>();
-
-    public List<TransacaoResponse> mostraTransacao() {
-        return trasancoes.stream().map(TransacaoMapper::toDto).collect(Collectors.toList());
-    }
-
 
     public void limparTransoes(){
-        trasancoes.clear();
+        transacoes.clear();
     }
+
+
+
+    public List<TransacaoRequest> getTransacoes() {
+        return transacoes;
+    }
+
 }
