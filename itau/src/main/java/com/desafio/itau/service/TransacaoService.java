@@ -23,4 +23,9 @@ public class TransacaoService {
     public List<TransacaoResponse> mostraTransacao() {
         return trasancoes.stream().map(TransacaoMapper::toDto).collect(Collectors.toList());
     }
+
+
+    public void limparTransoes(){
+        trasancoes.clear();
+    }
 }
